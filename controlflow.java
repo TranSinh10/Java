@@ -66,17 +66,27 @@ public class hello {
 		System.out.println("Bài 4");
 		System.out.println("Nhập tháng : ");
 		int month = scanner.nextInt();
-		if(month == 1 || month == 2 || month == 3) {
-			System.out.println("Tháng "+ month +" thuộc quý 1");
-		}
-		else if(month == 4 || month == 5 || month == 6) {
-			System.out.println("Tháng "+ month +" thuộc quý 2");
-		}
-		else if(month == 7 || month == 8 || month == 9) {
-			System.out.println("Tháng "+ month +" thuộc quý 3");
-		}
-		else if(month == 10 || month == 11 || month == 12) {
-			System.out.println("Tháng "+ month +" thuộc quý 4");
+		switch(month) {
+			case 1:
+			case 2:
+			case 3:
+				System.out.println("Tháng "+ month +" thuộc quý 1");
+				break;
+			case 4:
+			case 5:
+			case 6:
+				System.out.println("Tháng "+ month +" thuộc quý 2");
+				break;
+			case 7:
+			case 8:
+			case 9:
+				System.out.println("Tháng "+ month +" thuộc quý 3");
+				break;
+			case 10:
+			case 11:
+			case 12:
+				System.out.println("Tháng "+ month +" thuộc quý 4");
+				break;
 		}
 		//Bai5 Viết chương trình cho phép nhập vào và tính giai thừa của một số nguyên dương.
 		System.out.println("Bài 5");
@@ -110,14 +120,18 @@ public class hello {
 		System.out.println("Nhập vào 1 số bất kỳ : ");
 		int soBatKy = scanner.nextInt();
 		if(soBatKy >= 2) {
+			boolean laSoNguyenTo = true;
 			for (i = 2; i <= Math.sqrt(soBatKy); i++) {
-	            if (soBatKy % i == 0) {
-	            	System.out.println(soBatKy + " không phải số nguyên tố");
+		            if (soBatKy % i == 0) {
+		            	laSoNguyenTo = false;
+		            	break;
+		            }
+		        }
+				if (laSoNguyenTo) {
+	                System.out.println(soBatKy + " là số nguyên tố");
+	            } else {
+	                System.out.println(soBatKy + " không phải số nguyên tố");
 	            }
-	            else {
-	            	System.out.println(soBatKy + " là số nguyên tố");
-	            }
-	        }
 		}
 		else {
 			System.out.println(soBatKy + " không phải số nguyên tố");
@@ -125,16 +139,21 @@ public class hello {
 		//Bai10 Viết chương trình kiểm tra 1 năm bất kỳ có phải năm nhuận hay không (Năm nhuận là năm chia hết cho 4 nhưng không chia hết cho 100 
 		//hoặc chia hết cho 400). Chương trình bắt buộc phải nhập năm >=0, nếu nhập sai bắt nhập lại cho tới khi nào nhập đúng.
 		System.out.println("Bài 10");
-		System.out.println("Nhập năm bất kỳ : ");
-		int namBatKy = scanner.nextInt();
-		if(namBatKy%4 == 0) {
-			if(namBatKy%100 == 0 || namBatKy%400 == 0) {
-				System.out.println(namBatKy + " không là năm nhuận");
-			}
-			else {
-				System.out.println(namBatKy + " là năm nhuận");
-			}
-		}
+		int namBatKy;
+		while (true) {
+	            System.out.print("Nhập một năm (>= 0): ");
+	            namBatKy = scanner.nextInt();
+	            if (namBatKy >= 0) {
+	                break;
+	            } else {
+	                System.out.println("Năm không hợp lệ. Vui lòng nhập lại.");
+	            }
+	        }
+	        if ((namBatKy % 4 == 0 && namBatKy % 100 != 0) || (namBatKy % 400 == 0)) {
+	            System.out.println(namBatKy + " là năm nhuận.");
+	        } else {
+	            System.out.println(namBatKy + " không phải là năm nhuận.");
+	        }
 		}
 		
 }
